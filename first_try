@@ -1,0 +1,33 @@
+
+function strTodate(inString){
+    var newDate = new Date(inString.substring(0,4), inString.substring(4,6)-1, inString.substring(6,8));
+    return newDate;
+}
+function dateToString(inDate){
+    var newString = inDate.getFullYear().toString() + "-" + (inDate.getMonth()+1).toString() + "-" + inDate.getDate().toString();
+    return newString;
+}
+
+
+var currentDate = new Date(); 
+var dateStart = strTodate(beginDate);
+var dateEnd = strTodate(endDate);
+
+
+
+if((dateStart < currentDate) && (dateEnd > currentDate)){
+    dateStart = currentDate;
+}
+
+var changeDate = new Date (dateStart.getFullYear(), dateStart.getMonth(), dateStart.getDate());
+changeDate.setDate(dateStart.getDate()+395);
+
+if(dateEnd<changeDate){
+
+    beginDateOut = dateToString(dateStart);
+    endDateOut = dateToString(dateEnd);
+
+} else{
+    beginDateOut = dateToString(dateStart);
+    endDateOut = dateToString(changeDate);
+}
